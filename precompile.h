@@ -1,4 +1,7 @@
 #pragma once//保证头文件不按重复包含
+#pragma warning(disable:4996)//忽略4996错误提示
+#pragma comment  (lib, "User32.lib")
+#pragma comment  (lib, "gdi32.lib")
 #include <SDKDDKver.h>//兼容以前的系统*/
 #include <stdio.h>
 #include <tchar.h>
@@ -23,14 +26,30 @@ using namespace std;
 #include <time.h>
 #include <stdlib.h>
 #include <WinUser.h>
+#include <Assert.h>
+#include <winddi.h>
+#include <WindowsX.h>
+#include <Winbase.h>
+#include <Winnt.h>
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+#include "Grating.h"
+#include "ListNode.h"
 #include "UI.h"
 #include "Windows.h"
+#include "RGB.h"
 
 #pragma once
 #include<stdio.h>

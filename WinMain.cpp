@@ -117,13 +117,13 @@ int _tmain(int argc, _TCHAR* argv[])
     PrintUI("我的程序.exe", "myConsole", "color 0A", 500, 500, 800, 800);//要放在最顶层代替原来的控制台
     //Sleep(10000000);
     //_beginthreadex(NULL, 0, Threadone, NULL, 0, NULL);
-    char a[] = "Hello ";
+    char a[] = "CNM";
     set_WM_PASTE(a, sizeof(a));
 
  
-    HWND HWNDarray[2];
-    HWNDarray[0] = (HWND)0x00270D82;
-    HWNDarray[1] = (HWND)0x00110E4C;
+    //HWND HWNDarray[2];
+    //HWNDarray[0] = (HWND)0x00270D82;
+    //HWNDarray[1] = (HWND)0x00110E4C;
     
     /******************普通方法***********************/
     //for (size_t i = 0; i < 2; i++) {
@@ -164,16 +164,123 @@ int _tmain(int argc, _TCHAR* argv[])
     //EnumWindows(Enum_all_window, (LPARAM)"123");
 
     /************************窗口前端，还有一种穿透的方法还可以搞搞**********************************/
-    HWNDClass Windows;
-    Windows.enum_windows("TXGuiFoundation");//枚举窗口
-    for (size_t i = 0; i < Windows.HWNDNumber; i++) {
-        Windows.active_windows(Windows.HWNDArray[i]);
-        SendMessage(Windows.HWNDArray[i], WM_PASTE, 0, 0);//发送剪切板内容到窗口
-        Windows.press_key(VK_RETURN);//回车
-    }
+    //HWNDClass Windows;
+    //Windows.enum_windows("TXGuiFoundation");//枚举窗口
+    //for(int i =0;i<60;i++)
+    //for (size_t i = 0; i < Windows.HWNDNumber; i++) {
+    //    Windows.active_windows(Windows.HWNDArray[i]);
+    //    SendMessage(Windows.HWNDArray[i], WM_PASTE, 0, 0);//发送剪切板内容到窗口
+    //   // Windows.press_key(VK_RETURN);//回车
+    //}
+     
+    /**************************************************************************************************/
 
+    //HDC DC_Device = GetDC(0);//获取某一个窗口的DC上下文
+
+    //WORD beforMouseX = 0;//DWORD是整形
+    //WORD beforMouseY = 0;
+
+    //int BGRpackageSize = 100;
+    //CHAR* BGRpackage = (CHAR*)malloc(BGRpackageSize);//预留100个字节的堆内存空间
+    //ZeroMemory(BGRpackage, BGRpackageSize);//清零内存空间
+    //BGRpackage[0] = '{';
+    //while (true)
+    //{
+    //    //判断当前鼠标位置的取色
+    //    if (-32767 == GetAsyncKeyState(0x41))//32768是之前按下的键  0x41是A键    
+    //    //if ((-32767 == GetAsyncKeyState(0x41))&& (-32768 == GetAsyncKeyState(VK_CONTROL)))
+    //    {
+    //        //cout << "按下了A键" << endl;
+    //        POINT Mouse;
+    //        GetCursorPos(&Mouse);
+    //        if (Mouse.x - beforMouseX != 0 || Mouse.y - beforMouseY != 0)
+    //        {
+    //            int BGR = GetPixel(DC_Device,Mouse.x,Mouse.y);
+    //            cout << BGR << endl;
+    //            CHAR Single_BGR[100];
+    //            sprintf(Single_BGR, "%d,%d,%d,%d,%d,%d,0,-1,8,8,8,-8,-8,-8,5,5,5,5,5,5,5,5",//把某一个值以某种格式写到内存中
+    //                Mouse.x-beforMouseX,Mouse.y-beforMouseY,
+    //                    BGR >> 16, BGR >> 8 & 0xff, BGR & 0xff);
+
+    //            //BGR右移16位取B值，右移8位取G，整个全部与FF取R
+    //            printf("%s\n", Single_BGR);
+
+    //            BGRpackageSize = BGRpackageSize + strlen(Single_BGR);
+    //            BGRpackage = (char*)realloc(BGRpackage, BGRpackageSize);
+    //            strcat(BGRpackage, Single_BGR);
+    //            strcat(BGRpackage, "\r\n");
+
+    //            //更新鼠标位置
+    //            beforMouseX = Mouse.x;
+    //            beforMouseY = Mouse.y;
+    //        }
+    //    }
+    //    if (-32767 == GetAsyncKeyState(VK_TAB))//把点阵放入剪切板中
+    //    {
+    //        //打开剪切板
+    //        if (OpenClipboard(NULL))
+    //        {
+    //            //清空剪切板
+    //            EmptyClipboard();
+    //            //分配全局内存
+    //            HGLOBAL hMem = GlobalAlloc(GMEM_MOVEABLE, BGRpackageSize);
+    //            //锁定内存
+    //            LPVOID lpMem = GlobalLock(hMem);
+    //            //复制数据到内存
+    //            memcpy(lpMem, BGRpackage, BGRpackageSize);
+    //            //解锁内存
+    //            GlobalUnlock(hMem);
+    //            //将内存句柄设置到剪切板
+    //            SetClipboardData(CF_TEXT, hMem);
+    //            //关闭剪切板
+    //            CloseClipboard();
+    //            cout << "获取成功" << endl;
+    //        }
+    //        //释放内存
+    //        free(BGRpackage);
+    //        //初始化
+    //        BGRpackageSize = 100;
+    //        BGRpackage = (CHAR*)malloc(BGRpackageSize);
+    //        ZeroMemory(BGRpackage, BGRpackageSize);
+    //        BGRpackage[0] = '{';
+    //        beforMouseX = 0;
+    //        beforMouseY = 0;
+    //    }
+    //}
+
+
+            //BGRClass RGB;
+            //while (true)
+            //{
+            //    if (-32767 == GetAsyncKeyState(0x41))//32768是之前按下的键  0x41是A键
+            //        RGB.Get_RGB();
+            //    if (-32767 == GetAsyncKeyState(VK_TAB))//把点阵放入剪切板中
+            //    {
+            //        RGB.Clip_RGB();
+            //        RGB.End_RGB();
+            //        cout << "获取成功" << endl;
+            //    }
+            //}
+    /**************************************************************************************************/
+    //Grating MyGrating;
+    //HWND hwnd = FindWindow(NULL, "笔记.txt");
+    //cout << hwnd << endl;
+    //MyGrating.BinBack((HWND)0x001C0650);
+    //
+    //MyGrating.SetIntercept(0, 0, 500, 500);
+    //while (1)
+    //{
+    //    MyGrating.InterceptGrating();
+    //    MyGrating.DrawGrating((HWND)0x0, 0, 0, 0, 0, 0, 0);
+    //}
     /**************************************************************************************************/
 
     system("pause");//system不能代替等待线程执行完毕，只能Sleep或者等待，或许还有其他方法
 }
+
+
+
+
+
+
 
