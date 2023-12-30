@@ -19,7 +19,18 @@
 #include <tchar.h>
 #include <locale.h>
 using namespace std;
+#include <process.h>
+#include <time.h>
+#include <stdlib.h>
+#include <WinUser.h>
 
+
+
+
+
+
+#include "UI.h"
+#include "Windows.h"
 
 #pragma once
 #include<stdio.h>
